@@ -10,7 +10,9 @@
 
 --expand-internal() {
   local disable_list=("${(@s|,|)ZSH_EXPAND_ALL_DISABLE}")
-  [[ ${disable_list[(ie)alias]} -gt ${#disable_list} ]] && zle _expand_alias
+  local disable_word_list=("${(@s|,|)ZSH_EXPAND_ALIAS_IGNORE}")
+  first_word=${${(z)BUFFER}[1]}
+  [[ ${disable_word_list[(ie)$first_word]} -gt ${#disable_word_list} ]] && [[ ${disable_list[(ie)alias]} -gt ${#disable_list} ]] && zle _expand_alias
   [[ ${disable_list[(ie)word]}  -gt ${#disable_list} ]] && zle expand-word
 }
 
@@ -18,20 +20,12 @@ expand-all() {
   --expand-internal
   zle self-insert
 }
-zle -N expand-all
 
-expand-all-enter() {
-  --expand-internal
-  zle accept-line
-}
-zle -N expand-all-enter
-ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(expand-all-enter)
+zle -N expand-all
 
 # space expands all aliases, including global
 bindkey -M emacs " " expand-all
 bindkey -M viins " " expand-all
-bindkey -M emacs "^M" expand-all-enter
-bindkey -M viins "^M" expand-all-enter
 
 # control-space to make a normal space
 bindkey -M emacs "^ " magic-space

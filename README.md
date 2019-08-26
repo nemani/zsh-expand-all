@@ -1,19 +1,15 @@
-zsh-expand-all
-========
-This plugin let your zsh automatically expands all glob expressions,
-subcommands, normal aliases, and [global aliases].
+Zprezto Expand Aliases!
+======================
 
-Try it with [zplug], or your favorite plugin manager.
+This plugin let your zprezto automatically expands all glob expressions, subcommands, normal aliases, and [global aliases].
 
-```zsh
-zplug "simnalamburt/zsh-expand-all"
-```
+Clone this repo to .zprezto/modules
 
 Then just use your zsh as usual. Your aliases will be automatically expanded.
 If you only want to insert a space without expanding the command line, press
+
 <kbd>ctrl</kbd> + <kbd>space</kbd>.
 
-<br>
 
 Examples
 --------
@@ -92,14 +88,3 @@ This project was forked from [globalias] of Oh My Zsh.
   Pat Regan, 2012-11-04
 
 <br>
-
---------
-*zsh-expand-all* is primarily distributed under the terms of both the [MIT
-license] and the [Apache License (Version 2.0)]. See [COPYRIGHT] for details.
-
-[global aliases]: http://www.zshwiki.org/home/examples/aliasglobal
-[zplug]: https://github.com/zplug/zplug
-[globalias]: https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/globalias
-[MIT license]: LICENSE-MIT
-[Apache License (Version 2.0)]: LICENSE-APACHE
-[COPYRIGHT]: COPYRIGHT
