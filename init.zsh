@@ -8,11 +8,12 @@
 #   ZSH_EXPAND_ALL_DISABLE=word         # Disable word expanding
 #   ZSH_EXPAND_ALL_DISABLE=alias,word   # Disable alias and word expanding
 
+ZSH_EXPAND_ALL_DISABLE=('ls' 'cp' 'mv' 'cd')
+
 --expand-internal() {
   local disable_list=("${(@s|,|)ZSH_EXPAND_ALL_DISABLE}")
-  local disable_word_list=("${(@s|,|)ZSH_EXPAND_ALIAS_IGNORE}")
   first_word=${${(z)BUFFER}[1]}
-  [[ ${disable_word_list[(ie)$first_word]} -gt ${#disable_word_list} ]] && [[ ${disable_list[(ie)alias]} -gt ${#disable_list} ]] && zle _expand_alias
+  [[ ${ZSH_EXPAND_ALL_DISABLE[(ie)$first_word]} -lt ${#ZSH_EXPAND_ALL_DISABLE} ]] && [[ ${disable_list[(ie)alias]} -gt ${#disable_list} ]] && zle _expand_alias
   [[ ${disable_list[(ie)word]}  -gt ${#disable_list} ]] && zle expand-word
 }
 
