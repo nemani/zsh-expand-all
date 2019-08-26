@@ -12,8 +12,8 @@ ZSH_EXPAND_ALL_DISABLE=('ls' 'cp' 'mv' 'cd')
 
 --expand-internal() {
   local disable_list=("${(@s|,|)ZSH_EXPAND_ALL_DISABLE}")
-  first_word=${${(z)BUFFER}[1]}
-  [[ ${ZSH_EXPAND_ALL_DISABLE[(ie)$first_word]} -lt ${#ZSH_EXPAND_ALL_DISABLE} ]] && [[ ${disable_list[(ie)alias]} -gt ${#disable_list} ]] && zle _expand_alias
+  local first_word=${${(z)BUFFER}}
+  [[ ${ZSH_EXPAND_ALL_DISABLE[(ie)$first_word]} -gt ${#ZSH_EXPAND_ALL_DISABLE} ]] && [[ ${disable_list[(ie)alias]} -gt ${#disable_list} ]] && zle _expand_alias
   [[ ${disable_list[(ie)word]}  -gt ${#disable_list} ]] && zle expand-word
 }
 
