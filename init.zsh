@@ -8,7 +8,7 @@
 #   ZSH_EXPAND_ALL_DISABLE=word         # Disable word expanding
 #   ZSH_EXPAND_ALL_DISABLE=alias,word   # Disable alias and word expanding
 
-ZSH_EXPAND_ALL_DISABLE=('ls' 'cp' 'mv' 'cd')
+ZSH_EXPAND_ALL_DISABLE=('ls' 'cp' 'mv' 'cd' 'rm' 'grep' 'mkdir' 'rake' 'scp' 'git')
 
 --expand-internal() {
   local disable_list=("${(@s|,|)ZSH_EXPAND_ALL_DISABLE}")
